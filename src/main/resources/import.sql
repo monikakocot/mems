@@ -1,0 +1,2 @@
+INSERT INTO mem(title,url) VALUES ('Zaproszenie','http://memy.pl/show/big/uploads/Post/196122/15200773028906.jpg');
+INSERT INTO mem(title,url) VALUES ('Jak zyc','http://memy.pl/show/big/uploads/Post/196123/15200773794288.jpg');

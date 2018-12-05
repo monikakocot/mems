@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:if="${mem!=null}">
+    <img th:src="${mem.url}" height="200px"/>
+    <h3>All comments:</h3>
+    <p th:text="${comments}"/>
+    <h3>Add new comment:</h3>
+    <form action="/mems/addComment" method="post">
+        <input type="hidden" name="memId" th:value="${mem.id}"/>
+        <h5>New Comment:</h5>
+        <textarea type="text" name="commentBody"></textarea>
+        <br>
+        <input type="submit" value="Add comment">
+    </form>
+</div>
+
+<p th:if="${mem == null}">
+    Sorry, there is no Mem you are looking for :(
+</p>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>Images</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="mem: ${mems}">
+
+        <!-- Showing the mem but you cannot click it and show
+     <td><img th:src="${mem.url}" height="200px" /></td>
+     -->
+        <a th:href="@{'/mems/' + ${mem.id}}">
+            <img th:src="${mem.url}" height="200px" /></td>
+        </a>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
