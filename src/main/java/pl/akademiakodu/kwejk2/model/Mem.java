@@ -15,14 +15,15 @@ public class Mem {
     private String title;
     private String url;
 
-    @OneToMany(mappedBy = "mem",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mem",cascade = CascadeType.ALL) //creates column 'mem_id' in table 'mem_comments'
+    //@Column(name = "mem_id") // j.w. works in the same way also without it
+
     List<MemComment> comments = new ArrayList<>();
 
     public void addComment(MemComment memComment){
         comments.add(memComment);
         memComment.setMem(this);
     }
-
 
     public List<MemComment> getComments() {
         return comments;
@@ -32,12 +33,11 @@ public class Mem {
         this.comments = comments;
     }
 
-    @OneToOne(optional = true)
+    @OneToOne(optional = true) // creates column 'category_id' in table 'mem'
+    //@JoinColumn(name="category_id")// j.w. but works also without it :)
+    //@Column(name = "category_id") // not allowed on a @oneToOne property
     private Category category;
 
-
-
-    //GETTERS AND SETTERS
     public Category getCategory() {
         return category;
     }
@@ -45,6 +45,9 @@ public class Mem {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+
+    //GETTERS AND SETTERS
 
     public Long getId() {
         return id;
