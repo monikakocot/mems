@@ -25,14 +25,16 @@ public class MemController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @GetMapping("/mems/add")
-    public String add(ModelMap modelMap) {
-        modelMap.addAttribute("categories", categoryRepository.findAll());
-        modelMap.addAttribute("mem", new Mem());
-        return "/mems/add";
+
+
+    @GetMapping("/")
+    public String listMems(ModelMap modelMap) {
+        modelMap.addAttribute("mems", memRepository.findAll());
+        return "/mems/index";
     }
+
     @ResponseBody
-    @PostMapping("/mems")
+    @PostMapping("/")
     public String create(@ModelAttribute @Valid Mem mem, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "You have incorrectly filled out the form";
@@ -48,12 +50,13 @@ public class MemController {
         return "created";
     }
 */
-    @GetMapping("/mems")
-    public String listMems(ModelMap modelMap) {
-        modelMap.addAttribute("mems", memRepository.findAll());
-        return "/mems/index";
-    }
 
+    @GetMapping("/mems/add")
+    public String add(ModelMap modelMap) {
+        modelMap.addAttribute("categories", categoryRepository.findAll());
+        modelMap.addAttribute("mem", new Mem());
+        return "/mems/add";
+}
     @GetMapping("mems/{memId}")
     public String mem(@PathVariable Long memId, ModelMap modelMap) {
 
