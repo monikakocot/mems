@@ -33,10 +33,14 @@ public class Mem {
         this.comments = comments;
     }
 
+    /*
     @OneToOne(optional = true) // creates column 'category_id' in table 'mem'
     //@JoinColumn(name="category_id")// j.w. but works also without it :)
     //@Column(name = "category_id") // not allowed on a @oneToOne property
     private Category category;
+    */
+    @ManyToOne
+    private  Category category;
 
     public Category getCategory() {
         return category;

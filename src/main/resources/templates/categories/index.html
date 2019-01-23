@@ -11,12 +11,14 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
+        <th>Mems</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="category: ${categories}">
         <td th:text="${category.id}"/>
         <td th:text="${category.name}"/>
+        <td><a th:href="@{'/categories/' + ${category.id}}">Visit</a></td>
     </tr>
     </tbody>
 </table>
